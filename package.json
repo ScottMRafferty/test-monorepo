@@ -9,5 +9,8 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build"
-  }
+  },
+  "optionalDependencies": {
+  	"lightningcss-linux-x64-gnu": "^1.30.1"
+	}
 }
