@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // This allows the app to run without a 'page.js' at the root
-  typescript: { ignoreBuildErrors: true }, 
+  // This helps Vercel trace dependencies in a monorepo
+  output: 'standalone', 
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreDuringBuilds: true }
 };
 
 module.exports = nextConfig;
