@@ -1,15 +1,34 @@
 // apps/vercel-test/app/api/hello/route.js
 
-export async function OPTIONS() {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
-  });
+// apps/vercel-test/app/api/hello/route.js
+import wasmModuleFactory from '../../../lib/wasm/hello';
+
+export async function GET() {
+  try {
+    // Initialize the WASM module
+    const instance = await wasmModuleFactory();
+    
+    // Call the C++ function using ccall
+    // ccall(name, returnType, argTypes, args)
+    const jsonString = instance.ccall('get_json_response', 'string');
+
+    return new Response(jsonString, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+  } catch (error) {
+    console.error('WASM Error:', error);
+    return new Response(JSON.stringify({ error: "Failed to execute WASM" }), { status: 500 });
+  }
 }
+
+
+/*
+
+OLD TEST SCRIPT
 
 export async function GET(request) {
   return new Response(JSON.stringify({ 
@@ -24,3 +43,4 @@ export async function GET(request) {
     },
   });
 }
+*/

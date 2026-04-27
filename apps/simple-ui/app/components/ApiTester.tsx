@@ -14,7 +14,7 @@ export default function ApiTester(): React.JSX.Element {
 		setResponse(res.data);
  	 };
 
-	 return (
+	 return (<>
 		<p>
             <a
               onClick={()=>callApi('api/hello')}
@@ -36,8 +36,8 @@ export default function ApiTester(): React.JSX.Element {
             >
               Clear
             </a>{" "}
-			{response&&<><hr style={{marginTop: '20px', marginBottom: '20px'}}/><pre>{JSON.stringify(response, null, 2)}</pre></>}
           </p>
-	 );
+		{response&&<><hr style={{marginTop: '20px', marginBottom: '20px'}}/><pre>{JSON.stringify(response, null, 2)}</pre></>}
+	</>);
 
 }
