@@ -1,6 +1,5 @@
 // apps/vercel-test/app/api/hello/route.js
 
-// apps/vercel-test/app/api/hello/route.js
 import wasmModuleFactory from '../../../lib/wasm/hello';
 
 export async function GET() {
