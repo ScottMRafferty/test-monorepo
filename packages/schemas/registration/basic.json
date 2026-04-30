@@ -1,0 +1,17 @@
+{
+	"entity": "registration",
+	"type": "basic",
+	"form": {
+		"type": "object",
+		"required": ["key"],
+		"properties": {
+			"key": {
+				"type": "string", 
+				"title": "Registration Key", 
+				"placeholder": "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX",
+				"pattern": "^[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}$"
+			}
+		}
+	},
+	"plugin": "JUCE"
+}
